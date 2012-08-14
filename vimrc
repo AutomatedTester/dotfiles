@@ -70,6 +70,3 @@ map! ,dc describe('',function(){<CR>  describe('', function(){<CR>  it('', funct
 map! ,it it('', function(done){<CR>  done()<CR>});<Up><Up>
 map! ,da describe('', function(){<CR>  it('', function(done){<CR>  done()<CR>}); <CR>});
 nmap <F8> :TagbarToggle<CR> 
-
-let g:github_user = 'AutomatedTester'
-let g:github_token = '3d8b1238c9b1f321c9ec7defef1aac34'
