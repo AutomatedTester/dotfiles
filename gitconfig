@@ -1,0 +1,16 @@
+[user]
+	name = AutomatedTester
+	email = dburns@mozilla.com
+[core]
+	excludesfile = /Users/davidburns/.gitignore
+[github]
+	user = AutomatedTester
+[ghi]
+	token = 77c515a14c14fe6c857cba74efb4bcbd671745cb
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    di = diff
+    dc = diff --cached
