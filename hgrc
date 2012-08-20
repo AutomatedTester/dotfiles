@@ -6,8 +6,15 @@ username = David Burns <dburns@mozilla.com>
 [extensions]
 hgext.bookmarks =
 hggit =
-mq =
+hgext.mq =
+qimportbz = /home/davidburns/qimportbz
 
 [diff]
 git = 1
+showfunc = 1
+unified = 8
+
+[qimportbz]
+patch_format = bug-%%(bugnum)s
+msg_format = Bug %%(bugnum)s - "%%(title)s" [%%(flags)s]
 
