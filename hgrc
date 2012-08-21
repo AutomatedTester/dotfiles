@@ -1,20 +1,20 @@
 [ui]
 username = David Burns <dburns@mozilla.com>
-#[hostfingerprints]
-#bitbucket.org = 81:2b:10:90:dc:d3:71:ee:e0:7c:b4:75:ce:9b:6c:48:94:56:a1:fe
 
 [extensions]
-hgext.bookmarks =
-hggit =
 hgext.mq =
 qimportbz = /home/davidburns/qimportbz
-
-[diff]
-git = 1
-showfunc = 1
-unified = 8
+bzexport = /home/davidburns/bzexport
 
 [qimportbz]
 patch_format = bug-%%(bugnum)s
 msg_format = Bug %%(bugnum)s - "%%(title)s" [%%(flags)s]
 
+[bzexport]
+username = dburns@mozilla.com
+
+
+[diff]
+git = 1
+showfunc = 1
+unified = 8
