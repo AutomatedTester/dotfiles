@@ -34,9 +34,14 @@ set number
 "Incremental search
 set incsearch
 
+"folding settings
+set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
 
-filetype on            " enables filetype detection
-filetype plugin on     " enables filetype specific plugins
+filetype off           " enables filetype detection
+filetype plugin indent on     " enables filetype specific plugins
 
 " HTML (tab width 2 chr, no wrapping)
 autocmd FileType html set sw=2
@@ -70,3 +75,97 @@ map! ,dc describe('',function(){<CR>  describe('', function(){<CR>  it('', funct
 map! ,it it('', function(done){<CR>  done()<CR>});<Up><Up>
 map! ,da describe('', function(){<CR>  it('', function(done){<CR>  done()<CR>}); <CR>});
 nmap <F8> :TagbarToggle<CR> 
+
+let g:pydiction_location = '~/.vim/bundle/Pydiction/complete-dict'
+
+set list listchars=tab:→\ ,trail:·
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" ---------------
+" Plugin Bundles
+" ---------------
+
+" Navigation
+Bundle 'ZoomWin'
+Bundle 'wincent/Command-T'
+" This fork is required due to remapping ; to :
+Bundle 'christoomey/vim-space'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'kien/ctrlp.vim'
+" UI Additions
+Bundle 'mutewinter/vim-indent-guides'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'scrooloose/nerdtree'
+Bundle 'Rykka/colorv.vim'
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'tomtom/quickfixsigns_vim'
+" Commands
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
+Bundle 'godlygeek/tabular'
+Bundle 'mileszs/ack.vim'
+Bundle 'gmarik/sudo-gui.vim'
+Bundle 'milkypostman/vim-togglelist'
+Bundle 'AndrewRadev/sideways.vim'
+Bundle 'keepcase.vim'
+Bundle 'scratch.vim'
+Bundle 'mattn/zencoding-vim'
+Bundle 'mutewinter/GIFL'
+Bundle 'swaroopch/vim-markdown-preview'
+Bundle 'AndrewRadev/switch.vim'
+" Automatic Helpers
+Bundle 'IndexedSearch'
+Bundle 'xolox/vim-session'
+Bundle 'Raimondi/delimitMate'
+Bundle 'scrooloose/syntastic'
+Bundle 'ervandew/supertab'
+Bundle 'gregsexton/MatchTag'
+Bundle 'Shougo/neocomplcache'
+" Language Additions
+" Ruby
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
+" JavaScript
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'leshill/vim-json'
+Bundle 'itspriddle/vim-jquery'
+Bundle 'nono/vim-handlebars'
+Bundle 'jshint.vim'
+" TomDoc
+Bundle 'mutewinter/tomdoc.vim'
+Bundle 'jc00ke/vim-tomdoc'
+" Other Languages
+Bundle 'msanders/cocoa.vim'
+Bundle 'mutewinter/taskpaper.vim'
+Bundle 'mutewinter/nginx.vim'
+Bundle 'timcharper/textile.vim'
+Bundle 'mutewinter/vim-css3-syntax'
+Bundle 'acustodioo/vim-tmux'
+Bundle 'hallison/vim-markdown'
+Bundle 'xhtml.vim--Grny'
+Bundle 'groenewege/vim-less'
+" MatchIt
+Bundle 'matchit.zip'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+" Libraries
+Bundle 'L9'
+Bundle 'tpope/vim-repeat'
+Bundle 'mathml.vim'
+
+" Python Syntax Checker
+Bundle 'kevinw/pyflakes-vim'
+Bundle 'vim-scripts/pep8'
+Bundle 'vim-scripts/Pydiction'
+Bundle "vim-scripts/indentpython.vim"
+
