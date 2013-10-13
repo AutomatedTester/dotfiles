@@ -12,6 +12,8 @@ alias zshconfig="vim ~/.zshrc"
 alias isitmfbt="wget -qO - isitmfbt.com | grep 'theTime' | sed -e 's/<[^>]*>//g'"
 alias ls='ls -l'
 alias e='subl .'
+alias mt="hg qref -m 'try: -b do -p emulator,panda -u marionette-webapi -t none'"
+alias dt="hg qref -m 'try: -b do -p linux,macosx64,win32,linux_gecko,linux64_gecko -u marionette,marionette-webapi,gaia-ui-test -t none'"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
@@ -27,14 +29,15 @@ alias e='subl .'
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git virtualenvwrapper github node npm brew web-search)
+plugins=(git virtualenvwrapper github node npm brew web-search zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
+source /usr/local/bin/mozconfigwrapper.sh
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/bin:/usr/X11/bin:~/android-sdk-macosx/platform-tools/
