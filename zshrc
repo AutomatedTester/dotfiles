@@ -85,3 +85,5 @@ pr () {
     echo git pull $root $ref
   git pull $root $ref
   }
+  ZSH_HIGHLIGHT_STYLES[globbing]='fg=yellow'
+  ZSH_HIGHLIGHT_STYLES[path]='bold'
