@@ -2,19 +2,30 @@
 username = David Burns <dburns@mozilla.com>
 
 [extensions]
-hgext.mq =
-qimportbz = /home/davidburns/qimportbz
-bzexport = /home/davidburns/bzexport
-
-[qimportbz]
-patch_format = bug-%%(bugnum)s
-msg_format = Bug %%(bugnum)s - "%%(title)s" [%%(flags)s]
+hgext.mq = 
+rebase = 
+color = 
+progress = 
+qimportbz = ~/development/qimportbz
+bzexport = ~/development/bzexport
+mozext = ~/development/hgext-gecko-dev
+mq = 
+mqext = /Users/dburns/.mozbuild/mercurial/extensions/mqext
 
 [bzexport]
 username = dburns@mozilla.com
 
+[hooks]
+post-push = hg phase --force --draft "mq()"
 
 [diff]
 git = 1
 showfunc = 1
 unified = 8
+[mqext]
+mqcommit = auto
+[defaults]
+qnew = -U
+[hostfingerprints]
+bugzilla.mozilla.org = 47:13:a2:14:0c:46:45:53:12:0d:e5:36:16:a5:60:26:3e:da:3a:60
+hg.mozilla.org = AF:27:B9:34:47:4E:E5:98:01:F6:83:2B:51:C9:AA:D8:DF:FB:1A:27
