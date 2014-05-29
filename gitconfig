@@ -3,10 +3,17 @@
 	email = dburns@mozilla.com
 [core]
 	excludesfile = /Users/davidburns/.gitignore
+	autocrlf = input
+	editor = /usr/bin/vim
 [github]
 	user = AutomatedTester
-[ghi]
-	token = 77c515a14c14fe6c857cba74efb4bcbd671745cb
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    ui = auto
+[color "diff"]
+    whitespace = "red reverse"
 [alias]
     co = checkout
     br = branch
@@ -14,3 +21,18 @@
     st = status
     di = diff
     dc = diff --cached
+    unci = reset --soft HEAD^
+    unstage = reset HEAD
+    rmbr = !sh -c \"git branch -d \\$0 && git push origin :heads/\\$0 && git remote prune origin\"
+    rmremote = !sh -c \"git push origin :heads/\\$0\"
+    put = push origin HEAD
+    get = !git pull && git submodule init && git submodule update
+    unadd = reset HEAD
+    switch = !legit switch \"$@\"
+    branches = !legit branches
+    sprout = !legit sprout \"$@\"
+    unpublish = !legit unpublish \"$@\"
+    harvest = !legit harvest \"$@\"
+    sync = !legit sync \"$@\"
+    publish = !legit publish \"$@\"
+    graft = !legit graft \"$@\"
