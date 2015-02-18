@@ -2,16 +2,27 @@
 username = David Burns <dburns@mozilla.com>
 
 [extensions]
+purge =
 hgext.mq = 
 rebase = 
 color = 
 progress = 
-qimportbz = /Users/dburns/.mozbuild/version-control-tools/hgext/qimportbz
-bzexport = /Users/dburns/.mozbuild/version-control-tools/hgext/bzexport
-mozext = ~/development/hgext-gecko-dev
 mq = 
-mqext = /Users/dburns/.mozbuild/mercurial/extensions/mqext
 hgwatchman = ~/development/hgwatchman/hgwatchman
+histedit = 
+bzpost = /Users/dburns/.mozbuild/version-control-tools/hgext/bzpost
+firefoxtree = /Users/dburns/.mozbuild/version-control-tools/hgext/firefoxtree
+bzexport = /Users/dburns/.mozbuild/version-control-tools/hgext/bzexport
+reviewboard = /Users/dburns/.mozbuild/version-control-tools/hgext/reviewboard/client.py
+mqext = /Users/dburns/.mozbuild/mercurial/extensions/mqext
+qimportbz = /Users/dburns/.mozbuild/version-control-tools/hgext/qimportbz
+
+[paths]
+try = ssh://hg.mozilla.org/try
+review = ssh://reviewboard-hg.mozilla.org/gecko
+
+[bugzilla]
+username = dburns@mozilla.com
 
 [watchman]
 mode = on
@@ -19,8 +30,18 @@ mode = on
 [bzexport]
 username = dburns@mozilla.com
 
+[mozilla]
+ircnick = AutomatedTester
+
 [hooks]
 post-push = hg phase --force --draft "mq()"
+
+[revsetalias]
+wip = (parents(not public()) or not public() or . or head()) and (not obsolete() or unstable()^) and not closed()
+
+[templates]
+wip = '{label("log.branch", branches)} {label("changeset.{phase}", rev)} {label("grep.user", author|user)}{label("log.tag", if(tags," {tags}"))} {label("log.bookmark", if(bookmarks," {bookmarks}"))}\n{label(ifcontains(rev, revset('.'), 'desc.here'),desc|firstline)}'
+
 
 [diff]
 git = 1
@@ -33,7 +54,7 @@ qnew = -U
 [hostfingerprints]
 bugzilla.mozilla.org = 47:13:a2:14:0c:46:45:53:12:0d:e5:36:16:a5:60:26:3e:da:3a:60
 hg.mozilla.org = af:27:b9:34:47:4e:e5:98:01:f6:83:2b:51:c9:aa:d8:df:fb:1a:27
-bitbucket.org = 67:b3:bf:9f:c5:38:0e:4c:dd:4e:8a:da:3d:11:1b:c2:a5:d1:6c:6b
+bitbucket.org = 45:ad:ae:1a:cf:0e:73:47:06:07:e0:88:f5:cc:10:e5:fa:1c:f7:99
 
 [alias]
 # Pop all applied patches, update from remote, then push the patches to remote.
