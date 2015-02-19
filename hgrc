@@ -1,5 +1,6 @@
 [ui]
 username = David Burns <dburns@mozilla.com>
+editor = vim
 
 [extensions]
 purge =
