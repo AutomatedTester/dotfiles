@@ -15,9 +15,11 @@ alias fuck='$(thefuck $(fc -ln -1))'
 alias zshconfig="vim ~/.zshrc"
 alias isitmfbt="wget -qO - isitmfbt.com | grep 'theTime' | sed -e 's/<[^>]*>//g'"
 alias ls='ls -l'
+alias ato="git ci --author='Andreas Tolfsen <ato@mozilla.com>' --signoff"
 alias e='atom .'
 alias mt="hg qref -m 'try: -b do -p emulator,emulator-jb,emulator-kk,linux32_gecko,linux64_gecko,macosx64_gecko,win32_gecko -u marionette,marionette-webapi,gaia-ui-test,gaia-integrationi, gaia-ui-test-accessibility,gaia-ui-test-functional-1,gaia-ui-test-functional-2,gaia-ui-test-functional-3 -t none'"
 alias dt="hg qref -m 'try: -b do -p linux,macosx64,macosx64_gecko,win32,linux_gecko,linux64_gecko,linux64-mulet -u marionette,marionette-webapi,gaia-ui-test,gaia-integration,web-platform-tests,crashtest-1,crashtest-2,crashtest-3,reftest-1,reftest-2,reftest-3,reftest-4,reftest-5,reftest-6,reftest-7,reftest-8,reftest-9,reftest-10,reftest-11,reftest-12,reftest-13,reftest-14,reftest-15,reftest-16,reftest-17,reftest-18,reftest-19,reftest-20 -t none'"
+alias blobber="./mach clobber;./mach build"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
@@ -35,12 +37,11 @@ alias dt="hg qref -m 'try: -b do -p linux,macosx64,macosx64_gecko,win32,linux_ge
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git virtualenvwrapper github node npm brew web-search zsh-syntax-highlighting mercurial mercurial.plugin osx frontend-search)
+plugins=(git github node npm brew web-search zsh-syntax-highlighting mercurial osx frontend-search)
 
 source $ZSH/oh-my-zsh.sh
 source /usr/local/bin/mozconfigwrapper.sh
@@ -97,3 +98,20 @@ pr () {
 
 # added by travis gem
 [ -f /Users/dburns/.travis/travis.sh ] && source /Users/dburns/.travis/travis.sh
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+export NVM_DIR=~/.nvm
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="/usr/local/opt/nss/bin:$PATH"
+#arcanist
+export PATH="/Users/dburns/development/some_install_path/arcanist/bin/:$PATH"
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python/libexec/bin
+source $(brew --prefix nvm)/nvm.sh
+source $HOME/.cargo/env
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+autoload -U bashcompinit && bashcompinit
+source /Users/dburns/development/mozilla-central/python/mach/bash-completion.sh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

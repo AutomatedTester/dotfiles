@@ -1,6 +1,6 @@
 [user]
 	name = AutomatedTester
-	email = dburns@mozilla.com
+	email = david.burns@theautomatedtester.co.uk
 [core]
 	excludesfile = /Users/davidburns/.gitignore
 	autocrlf = input
@@ -36,3 +36,11 @@
     sync = !legit sync \"$@\"
     publish = !legit publish \"$@\"
     graft = !legit graft \"$@\"
+	dad = !curl https://icanhazdadjoke.com/ && git add
+[credential]
+	helper = osxkeychain
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
