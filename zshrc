@@ -1,8 +1,10 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
-ccache --max-size 4G
 EDITOR=vim
 HGEDITOR=$EDITOR
+
+export HISTSIZE=10000000
+export HISEFILESIZE=10000000
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -48,7 +50,7 @@ source /usr/local/bin/mozconfigwrapper.sh
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/bin:/usr/X11/bin:~/android-sdk-macosx/platform-tools/:/usr/local/Cellar/ruby/2.1.0/bin:/usr/local/opt/ccache/libexec
 export ANDROID_HOME=/Users/dburns/android-sdk-macosx
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export JAVA_HOME=$(/usr/libexec/java_home )
 
 alias irc='ssh -L 22091:localhost:22091 dburns@people.mozilla.com'
 alias lin='ssh -L 20001:localhost:20000 automatedtester@secure.theautomatedtester.co.uk'
@@ -93,25 +95,22 @@ pr () {
     echo git pull $root $ref
   git pull $root $ref
   }
-  ZSH_HIGHLIGHT_STYLES[globbing]='fg=yellow'
-  ZSH_HIGHLIGHT_STYLES[path]='bold'
 
 # added by travis gem
 [ -f /Users/dburns/.travis/travis.sh ] && source /Users/dburns/.travis/travis.sh
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 export NVM_DIR=~/.nvm
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="/usr/local/opt/nss/bin:$PATH"
-#arcanist
-export PATH="/Users/dburns/development/some_install_path/arcanist/bin/:$PATH"
+
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python/libexec/bin
 source $(brew --prefix nvm)/nvm.sh
 source $HOME/.cargo/env
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 autoload -U bashcompinit && bashcompinit
-source /Users/dburns/development/mozilla-central/python/mach/bash-completion.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
+
