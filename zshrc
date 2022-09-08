@@ -12,16 +12,8 @@ export HISEFILESIZE=10000000
 # time that oh-my-zsh is loaded.
 ZSH_THEME="half-life"
 
-alias relspec="git push w3c master && git push origin master && git co gh-pages && git merge master && git push origin gh-pages && git push w3c gh-pages && git co master"
-alias fuck='$(thefuck $(fc -ln -1))'
 alias zshconfig="vim ~/.zshrc"
-alias isitmfbt="wget -qO - isitmfbt.com | grep 'theTime' | sed -e 's/<[^>]*>//g'"
-alias ls='ls -l'
-alias ato="git ci --author='Andreas Tolfsen <ato@mozilla.com>' --signoff"
-alias e='atom .'
-alias mt="hg qref -m 'try: -b do -p emulator,emulator-jb,emulator-kk,linux32_gecko,linux64_gecko,macosx64_gecko,win32_gecko -u marionette,marionette-webapi,gaia-ui-test,gaia-integrationi, gaia-ui-test-accessibility,gaia-ui-test-functional-1,gaia-ui-test-functional-2,gaia-ui-test-functional-3 -t none'"
-alias dt="hg qref -m 'try: -b do -p linux,macosx64,macosx64_gecko,win32,linux_gecko,linux64_gecko,linux64-mulet -u marionette,marionette-webapi,gaia-ui-test,gaia-integration,web-platform-tests,crashtest-1,crashtest-2,crashtest-3,reftest-1,reftest-2,reftest-3,reftest-4,reftest-5,reftest-6,reftest-7,reftest-8,reftest-9,reftest-10,reftest-11,reftest-12,reftest-13,reftest-14,reftest-15,reftest-16,reftest-17,reftest-18,reftest-19,reftest-20 -t none'"
-alias blobber="./mach clobber;./mach build"
+alias e='code .'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
@@ -43,19 +35,15 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github node npm brew web-search zsh-syntax-highlighting mercurial osx frontend-search)
+plugins=(bazel fzf iterm2 python rust git github node npm brew web-search mercurial macos frontend-search)
 
 source $ZSH/oh-my-zsh.sh
+alias ls='exa'
 source /usr/local/bin/mozconfigwrapper.sh
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/bin:/usr/X11/bin:~/android-sdk-macosx/platform-tools/:/usr/local/Cellar/ruby/2.1.0/bin:/usr/local/opt/ccache/libexec
-export ANDROID_HOME=/Users/dburns/android-sdk-macosx
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/bin:/usr/X11/bin:/usr/local/Cellar/ruby/2.1.0/bin:/usr/local/opt/ccache/libexec
 export JAVA_HOME=$(/usr/libexec/java_home )
 
-alias irc='ssh -L 22091:localhost:22091 dburns@people.mozilla.com'
-alias lin='ssh -L 20001:localhost:20000 automatedtester@secure.theautomatedtester.co.uk'
-alias buildspec='cat *_*.html > webdriver-spec.html'
-alias ls='ls -G'
 alias got='git'
 alias gut='git'
 alias pythom='python'
@@ -98,15 +86,11 @@ pr () {
 
 # added by travis gem
 [ -f /Users/dburns/.travis/travis.sh ] && source /Users/dburns/.travis/travis.sh
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
 export NVM_DIR=~/.nvm
 export PATH="/usr/local/opt/nss/bin:$PATH"
 
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python/libexec/bin
 source $(brew --prefix nvm)/nvm.sh
 source $HOME/.cargo/env
-autoload -U bashcompinit && bashcompinit
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -114,3 +98,13 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
 
+#dotnet
+export PATH="/usr/local/share/dotnet:$PATH"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+# Bazel
+export PATH=$PATH:/Users/davidburns/development/buildtools/bazel-bin/buildifier/darwin_amd64_stripped/buildifier
+
+eval "$(rbenv init -)"
